@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Project applications directory
 APPS_DIR = BASE_DIR / "apps"
 
-sys.path.insert(0, APPS_DIR)
+sys.path.insert(0, str(APPS_DIR))
 
 environ.Env.read_env(BASE_DIR / ".env")
 
@@ -73,12 +73,7 @@ WSGI_APPLICATION = "configs.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+DATABASES = {"default": env.db_url("DJANGO_DB")}
 
 
 # Password validation

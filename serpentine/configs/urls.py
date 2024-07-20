@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.urls import path
 
-from serpentine.api.urls import api_v1
+# isort: split
+from api.urls import api_v1
 
 urlpatterns = [
     path("admin/", admin.site.urls),
